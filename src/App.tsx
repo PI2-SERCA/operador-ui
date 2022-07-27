@@ -1,9 +1,7 @@
-import React from 'react';
+import { Home } from './pages/Home';
 
-function App() {
-  return (
-    <div>Finalmsente funciossnou</div>
-  );
-}
-
-export default App;
+export const App = () => (
+        <div>
+            <Home />
+        </div>
+    );
