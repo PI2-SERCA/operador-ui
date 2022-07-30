@@ -3,7 +3,7 @@ import { Home } from './pages/Home';
 
 const listaCeramicas = [
         {
-            width: 45,
+            width: 41,
             length: 46,
             depth: 3.5,
             numberOfTimes: 23,
@@ -21,7 +21,7 @@ const listaCeramicas = [
             numberOfTimes: 13,
         },
         {
-            width: 47.5,
+            width: 25.5,
             length: 12.46,
             depth: 5.78,
             numberOfTimes: 4,
