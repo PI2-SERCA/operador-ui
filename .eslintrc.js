@@ -22,6 +22,8 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+      "react/destructuring-assignment": 0,
+      "react/jsx-props-no-spreading" : 0,
       "import/extensions": [
           "error",
           "ignorePackages",
@@ -44,6 +46,8 @@ module.exports = {
       "react/react-in-jsx-scope": "off",
       "indent": "off",
       "react/jsx-indent": "off",
-      "react/jsx-indent-props": "off"
+      "jsx-quotes": ['error', "prefer-single"],
+      "react/jsx-indent-props": "off",
+      "object-curly-spacing": 0
   },
 };
