@@ -43,6 +43,7 @@ module.exports = {
               "unnamedComponents": "arrow-function"
           }
       ],
+      "no-plusplus" : 0,
       "react/react-in-jsx-scope": "off",
       "indent": "off",
       "react/jsx-indent": "off",
