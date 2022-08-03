@@ -10,7 +10,7 @@ export const Home: React.FC<tipoCeramica> = (prop: tipoCeramica) => (
                 {prop.ceramica.map(
                     (ceramica) => (
                         <div className='corte'>
-                            <p className='numeroCorte'>#</p>
+                            <p className='numeroCorte'>{ceramica.order}</p>
 
                             <svg>
                                 <polygon points='200,10 250,190 160,210' />
