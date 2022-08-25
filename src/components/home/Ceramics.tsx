@@ -1,0 +1,38 @@
+import { CeramicList } from './CeramicList';
+
+const ceramicsLis5t = [
+  {
+    width: 41,
+    order: 1,
+    length: 46,
+    depth: 3.5,
+    numberOfTimes: 23,
+  },
+  {
+    width: 53,
+    length: 46.6,
+    order: 2,
+    depth: 5.67,
+    numberOfTimes: 73,
+  },
+  {
+    width: 47.5,
+    length: 48.6,
+    order: 3,
+    depth: 3.885,
+    numberOfTimes: 13,
+  },
+  {
+    width: 25.5,
+    length: 12.46,
+    order: 4,
+    depth: 5.78,
+    numberOfTimes: 4,
+  },
+];
+
+export const Ceramics: React.FC = () => (
+  <div>
+    <CeramicList ceramica={ceramicsLis5t} />
+  </div>
+);
