@@ -1,23 +1,30 @@
-.titulo{
+body{
+    font-family: 'Roboto';
+}
+.titulo {
     margin: 5% 0;
 }
-.tituloPagina{
+
+.tituloPagina {
     text-align: start;
     font-weight: 300;
 }
-.container{
+
+.container {
     width: 90%;
-    margin:1% auto 5% auto;
+    margin: 1% auto 5% auto;
     padding: 1%;
     text-align: center;
 }
+
 .lista-corte {
-    border-radius:5px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
 }
-.corte{
-    margin-right:2%;
+
+.corte {
+    margin-right: 2%;
     border: 1px solid #aaa;
     border-radius: 10px;
     padding: 1%;
@@ -27,10 +34,12 @@
     text-align: left;
     padding: 1%;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
-button{
+
+button {
     transition-duration: 0.5s;
     padding: 3%;
     font-size: medium;
@@ -40,29 +49,36 @@ button{
     border: none;
     border-radius: 10px;
 }
-button.panic:hover{
+
+button.panic:hover {
     background-color: #fff;
     color: #CC3E3E;
     border: 1px solid#CC3E3E;
 }
-button.panic{
+
+button.panic {
     background-color: #CC3E3E;
     font-weight: bolder;
 }
+
 button.restart {
     background-color: #036;
 }
+
 button.restart:hover {
     background-color: #fff;
     color: #036;
     border: 1px solid#036;
 }
-.acao{
+
+.acao {
+    margin-top: 3%;
     padding: 1%;
     display: flex;
-    justify-content:space-between ;
+    justify-content: space-between;
 }
-.numeroCorte{
+
+.numeroCorte {
     text-align: start;
     background-color: #ddd;
     width: fit-content;

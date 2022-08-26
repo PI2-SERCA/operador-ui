@@ -1,33 +1,37 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { modalStyle } from '../styling/modalStyle';
+import '../styling/modalStyle.css';
 
-export const PanicModal: React.FC = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+import Modal from 'react-modal';
+import {useState} from 'react';
 
-  return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-      >
-        <Box sx={modalStyle}>
-          <Typography id='modal-modal-title' variant='h6' component='h2'>
-            Text in a modal
-          </Typography>
-          <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
-    </div>
-  );
+Modal.setAppElement('#root');
+const modalInformation = {
+    description: 'Erro no servidor',
+    title: 'Oooops :-(',
+};
+
+export const PanicModal = () => {
+    const [modalIsOpen, setIsOpen] = useState(true);// Deixa a modal aberta por padrão
+    const closeModal = () => { setIsOpen(false); };
+    const oṕenModal = () => { setIsOpen(true); };
+    const {title, description} = modalInformation;
+
+    return (
+        <div className='modalContainer'>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel={title}
+                overlayClassName='modal-overlay'
+                className='modal-content'
+            >
+                    <h2>{title}</h2>
+                    <hr />
+                    <p>{description}</p>
+                    <div className='acao'>
+                        <button className='restart' type='button'>Restart</button>
+                        <button className='panic' type='button'>PANIC</button>
+                    </div>
+            </Modal>
+        </div>
+    );
 };

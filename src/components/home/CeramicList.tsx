@@ -3,7 +3,6 @@ import { tipoCeramica } from '../../types/Ceramica';
 
 export const CeramicList: React.FC<tipoCeramica> = (prop: tipoCeramica) => (
   <div>
-    <div className='container'>
       <h1 className='tituloPagina'>Página do operador</h1>
       <hr />
       <h2 className='titulo'>Fila de cerâmicas cortadas</h2>
@@ -38,17 +37,8 @@ export const CeramicList: React.FC<tipoCeramica> = (prop: tipoCeramica) => (
                 {ceramica.numberOfTimes}
               </p>
             </section>
-            <div className='acao'>
-              <button className='restart' type='button'>
-                Restart
-              </button>
-              <button className='panic' type='button'>
-                PANIC
-              </button>
-            </div>
           </div>
         ))}
       </section>
-    </div>
   </div>
 );
