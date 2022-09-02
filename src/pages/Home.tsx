@@ -24,7 +24,7 @@ interface Ceramic {
 export const Home: React.FC = () => {
   const classes = useStyles();
 
-  const [panicModalOpened, setPanicModalOpened] = useState(true);
+  const [panicModalOpened, setPanicModalOpened] = useState(false);
 
   const ceramicList: Ceramic[] = [
     {
@@ -86,7 +86,7 @@ export const Home: React.FC = () => {
         Fila de cortes
       </Typography>
 
-      <Box className={classes.container}>
+      <Box className={classes.listContainer}>
         {ceramicList.map((ceramic) => (
           <Badge
             key={ceramic.order}

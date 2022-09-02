@@ -2,7 +2,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() =>
   createStyles({
-    container: {
+    listContainer: {
       width: '90%',
       display: 'flex',
       flexWrap: 'wrap',
