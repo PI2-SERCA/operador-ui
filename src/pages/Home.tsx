@@ -11,15 +11,7 @@ import {
 import useStyles from './home-styles';
 import { base64ToUrl } from '../utils/image';
 import { PanicModal } from '../components/PanicModal';
-
-interface Ceramic {
-  width: number;
-  order: number;
-  depth: number;
-  length: number;
-  cutImage: string;
-  repetitions: number;
-}
+import { Ceramic } from '../types/Ceramic';
 
 export const Home: React.FC = () => {
   const classes = useStyles();
