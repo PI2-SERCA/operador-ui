@@ -17,8 +17,7 @@ import { PanicModal } from '../components/PanicModal';
 import { Ceramic } from '../types/Ceramic';
 import { ConfirmationModal } from '../components/ConfirmationModal/ConfirmationModal';
 
-const REMOTE_SERVER = 'http://localhost:3005';
-const socket = io(REMOTE_SERVER);
+const socket = io(process.env.REACT_APP_OPERADOR_API_URL as string);
 
 export const Home: React.FC = () => {
   const classes = useStyles();
