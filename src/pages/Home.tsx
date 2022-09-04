@@ -96,7 +96,12 @@ export const Home: React.FC = () => {
         badgeContent={`#${idx + 1}`}
         color="primary"
       >
-        <Card className={classes.ceramicCard}>
+        <Card
+          className={classes.ceramicCard}
+          style={{
+            border: idx === 0 ? '4px solid rgba(63, 81, 181, 0.75)' : '',
+          }}
+        >
           <CardMedia
             component="img"
             alt="Imagem corte"
@@ -165,7 +170,7 @@ export const Home: React.FC = () => {
       <ConfirmationModal
         opened={confirmationModalOpened}
         setOpened={setConfirmationModalOpened}
-        ceramicSize={`${ceramicList[0]?.width}x${ceramicList[0]?.height}`}
+        ceramicSize={`${ceramicList[0]?.width}x${ceramicList[0]?.height} cm`}
         confirmAction={startCut}
       />
 

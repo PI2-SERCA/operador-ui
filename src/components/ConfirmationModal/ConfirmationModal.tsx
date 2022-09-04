@@ -39,7 +39,7 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
     <Modal open={opened} onClose={closeModal}>
       <Paper style={getModalStyle()} className={classes.paper}>
         <Box className={classes.header}>
-          <Typography variant="h5">Início de corte</Typography>
+          <Typography variant="h5">Deseja iniciar o corte?</Typography>
 
           <Close className={classes.closeIcon} onClick={closeModal} />
         </Box>
@@ -48,9 +48,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           <Typography variant="subtitle1">
             Certifique-se que a cerâmica com as dimensões corretas (
             {ceramicSize}) está posicionada corretamente na máquina.
-            <br />
-            <br />
-            Deseja realmente iniciar o corte?
           </Typography>
         </Box>
 
