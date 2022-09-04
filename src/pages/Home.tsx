@@ -61,6 +61,7 @@ export const Home: React.FC = () => {
 
     socket.on('disconnect', () => {
       setIsConnected(false);
+      setCeramicList([]);
     });
 
     socket.on('state', updateList);
@@ -72,6 +73,85 @@ export const Home: React.FC = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const getCeramicList = () => {
+    if (!ceramicList.length) {
+      return (
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="h2"
+          color="textSecondary"
+          style={{ margin: '32px 0' }}
+        >
+          Nenhum corte no momento...
+        </Typography>
+      );
+    }
+
+    return ceramicList.map((ceramic, idx) => (
+      <Badge
+        // eslint-disable-next-line react/no-array-index-key
+        key={`ceramic-${idx}`}
+        badgeContent={`#${idx + 1}`}
+        color="primary"
+      >
+        <Card className={classes.ceramicCard}>
+          <CardMedia
+            component="img"
+            alt="Imagem corte"
+            title="Imagem corte"
+            image={base64ToUrl(ceramic.base64)}
+            className={classes.cutImage}
+          />
+
+          <hr />
+
+          <CardContent style={{ padding: 0 }}>
+            <Typography gutterBottom variant="h6" component="h2">
+              Informações cerâmica
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ margin: '8px 0' }}
+            >
+              <strong>Comprimento:</strong> {ceramic.width} cm
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ margin: '8px 0' }}
+            >
+              <strong>Largura:</strong> {ceramic.height} cm
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ margin: '8px 0' }}
+            >
+              <strong>Espessura:</strong> {ceramic.depth} cm
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ margin: '8px 0' }}
+            >
+              <strong>Repetições:</strong> {ceramic.repetitions}
+            </Typography>
+          </CardContent>
+        </Card>
+      </Badge>
+    ));
+  };
 
   return (
     <Container>
@@ -140,75 +220,15 @@ export const Home: React.FC = () => {
       <Box className={classes.listContainer}>
         {errorMessage ? (
           <Typography
-            variant="body2"
-            color="secondary"
-            style={{ margin: '8px 0 16px 0' }}
+            gutterBottom
+            color="error"
+            variant="subtitle1"
+            style={{ margin: '32px 0' }}
           >
             {errorMessage}
           </Typography>
         ) : (
-          ceramicList.map((ceramic, idx) => (
-            <Badge
-              // eslint-disable-next-line react/no-array-index-key
-              key={`ceramic-${idx}`}
-              badgeContent={`#${idx + 1}`}
-              color="primary"
-            >
-              <Card className={classes.ceramicCard}>
-                <CardMedia
-                  component="img"
-                  alt="Imagem corte"
-                  title="Imagem corte"
-                  image={base64ToUrl(ceramic.base64)}
-                  className={classes.cutImage}
-                />
-
-                <hr />
-
-                <CardContent style={{ padding: 0 }}>
-                  <Typography gutterBottom variant="h6" component="h2">
-                    Informações cerâmica
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    style={{ margin: '8px 0' }}
-                  >
-                    <strong>Comprimento:</strong> {ceramic.width} cm
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    style={{ margin: '8px 0' }}
-                  >
-                    <strong>Largura:</strong> {ceramic.height} cm
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    style={{ margin: '8px 0' }}
-                  >
-                    <strong>Espessura:</strong> {ceramic.depth} cm
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    style={{ margin: '8px 0' }}
-                  >
-                    <strong>Repetições:</strong> {ceramic.repetitions}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Badge>
-          ))
+          getCeramicList()
         )}
       </Box>
     </Container>
