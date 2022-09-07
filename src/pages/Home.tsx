@@ -36,9 +36,9 @@ export const Home: React.FC = () => {
     return true;
   };
 
-  const updateList = (data: string) => {
+  const updateList = (data: Ceramic[]) => {
     try {
-      const newCeramicList: Ceramic[] = JSON.parse(data);
+      const newCeramicList: Ceramic[] = data;
 
       setCeramicList(newCeramicList);
     } catch (error) {
@@ -66,10 +66,15 @@ export const Home: React.FC = () => {
 
     socket.on('state', updateList);
 
+    socket.on('append-cut', (data: Ceramic[]) =>
+      setCeramicList((prev) => [...prev, ...data])
+    );
+
     return () => {
       socket.off('connect');
       socket.off('disconnect');
       socket.off('state');
+      socket.off('append-cut');
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
