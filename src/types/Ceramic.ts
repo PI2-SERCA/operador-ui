@@ -1,8 +1,7 @@
 export interface Ceramic {
   width: number;
-  order: number;
   depth: number;
-  length: number;
-  cutImage: string;
+  height: number;
+  base64: string;
   repetitions: number;
 }
