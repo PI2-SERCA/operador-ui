@@ -16,6 +16,7 @@ import { base64ToUrl } from '../utils/image';
 import { PanicModal } from '../components/PanicModal';
 import { Ceramic } from '../types/Ceramic';
 import { ConfirmationModal } from '../components/ConfirmationModal/ConfirmationModal';
+import { metersToCentimeters } from '../utils/number';
 
 const socket = io(process.env.REACT_APP_OPERADOR_API_URL as string);
 
@@ -78,6 +79,13 @@ export const Home: React.FC = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const getCeramicSize = () => {
+    const width = metersToCentimeters(ceramicList[0]?.width);
+    const height = metersToCentimeters(ceramicList[0]?.height);
+
+    return `${width}x${height} cm`;
+  };
 
   const getCeramicList = () => {
     if (!ceramicList.length) {
@@ -176,7 +184,7 @@ export const Home: React.FC = () => {
       <ConfirmationModal
         opened={confirmationModalOpened}
         setOpened={setConfirmationModalOpened}
-        ceramicSize={`${ceramicList[0]?.width}x${ceramicList[0]?.height} cm`}
+        ceramicSize={getCeramicSize()}
         confirmAction={startCut}
       />
 
