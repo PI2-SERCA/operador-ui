@@ -49,7 +49,7 @@ export const Home: React.FC = () => {
   };
 
   const startCut = () => {
-    socket.emit('start-cut', JSON.stringify(ceramicList[0]));
+    socket.emit('start-cut');
   };
 
   useEffect(() => {
@@ -100,6 +100,7 @@ export const Home: React.FC = () => {
         key={`ceramic-${idx}`}
         badgeContent={`#${idx + 1}`}
         color="primary"
+        style={{ margin: 8 }}
       >
         <Card
           className={classes.ceramicCard}
