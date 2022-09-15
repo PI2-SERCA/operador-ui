@@ -16,6 +16,7 @@ import { base64ToUrl } from '../utils/image';
 import { PanicModal } from '../components/PanicModal';
 import { Ceramic } from '../types/Ceramic';
 import { ConfirmationModal } from '../components/ConfirmationModal/ConfirmationModal';
+import { metersToCentimeters } from '../utils/number';
 
 const socket = io(process.env.REACT_APP_OPERADOR_API_URL as string);
 
@@ -36,9 +37,9 @@ export const Home: React.FC = () => {
     return true;
   };
 
-  const updateList = (data: string) => {
+  const updateList = (data: Ceramic[]) => {
     try {
-      const newCeramicList: Ceramic[] = JSON.parse(data);
+      const newCeramicList: Ceramic[] = data;
 
       setCeramicList(newCeramicList);
     } catch (error) {
@@ -49,7 +50,7 @@ export const Home: React.FC = () => {
   };
 
   const startCut = () => {
-    socket.emit('start-cut', JSON.stringify(ceramicList[0]));
+    socket.emit('start-cut');
   };
 
   useEffect(() => {
@@ -66,13 +67,25 @@ export const Home: React.FC = () => {
 
     socket.on('state', updateList);
 
+    socket.on('append-cut', (data: Ceramic[]) =>
+      setCeramicList((prev) => [...prev, ...data])
+    );
+
     return () => {
       socket.off('connect');
       socket.off('disconnect');
       socket.off('state');
+      socket.off('append-cut');
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const getCeramicSize = () => {
+    const width = metersToCentimeters(ceramicList[0]?.width);
+    const height = metersToCentimeters(ceramicList[0]?.height);
+
+    return `${width}x${height} cm`;
+  };
 
   const getCeramicList = () => {
     if (!ceramicList.length) {
@@ -95,6 +108,7 @@ export const Home: React.FC = () => {
         key={`ceramic-${idx}`}
         badgeContent={`#${idx + 1}`}
         color="primary"
+        style={{ margin: 8 }}
       >
         <Card
           className={classes.ceramicCard}
@@ -170,7 +184,7 @@ export const Home: React.FC = () => {
       <ConfirmationModal
         opened={confirmationModalOpened}
         setOpened={setConfirmationModalOpened}
-        ceramicSize={`${ceramicList[0]?.width}x${ceramicList[0]?.height} cm`}
+        ceramicSize={getCeramicSize()}
         confirmAction={startCut}
       />
 
