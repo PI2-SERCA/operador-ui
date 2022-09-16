@@ -137,7 +137,8 @@ export const Home: React.FC = () => {
               component="p"
               style={{ margin: '8px 0' }}
             >
-              <strong>Comprimento:</strong> {ceramic.width} cm
+              <strong>Comprimento:</strong> {metersToCentimeters(ceramic.width)}{' '}
+              cm
             </Typography>
 
             <Typography
@@ -146,7 +147,7 @@ export const Home: React.FC = () => {
               component="p"
               style={{ margin: '8px 0' }}
             >
-              <strong>Largura:</strong> {ceramic.height} cm
+              <strong>Largura:</strong> {metersToCentimeters(ceramic.height)} cm
             </Typography>
 
             <Typography
@@ -155,7 +156,8 @@ export const Home: React.FC = () => {
               component="p"
               style={{ margin: '8px 0' }}
             >
-              <strong>Espessura:</strong> {ceramic.depth} cm
+              <strong>Espessura:</strong> {metersToCentimeters(ceramic.depth)}{' '}
+              cm
             </Typography>
 
             <Typography
